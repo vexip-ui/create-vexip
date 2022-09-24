@@ -1,0 +1,10 @@
+{
+  "name": "vexip-prettier-starter",
+  "scripts": {
+    "prettier": "prettier --write \"src/**/*.{ts,js,json,css,pcss,scss,vue,html,md}\""
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1"
+  },
+  "extra": {}
+}

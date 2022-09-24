@@ -1,0 +1,9 @@
+assets/
+dist/
+node_modules/
+public/
+scripts/
+.husky/
+
+**/*.svg
+**/*.sh

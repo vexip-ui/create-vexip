@@ -1,0 +1,25 @@
+{
+  "name": "vexip-stylelint-starter",
+  "scripts": {
+    "lint:style": "stylelint **/*.{vue,css,scss} --fix"
+  },
+  "devDependencies": {
+    "postcss": "^8.4.14",
+    "postcss-html": "^1.4.1",
+    "postcss-preset-env": "^7.7.2",
+    "stylelint": "^14.9.1",
+    "stylelint-config-html": "^1.0.0",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-recommended-vue": "^1.4.0",
+    "stylelint-config-standard": "^26.0.0",
+    "stylelint-config-standard-scss": "^4.0.0",
+    "stylelint-order": "^5.0.0"
+  },
+  "extra": {
+    "prettier": {
+      "devDependencies": {
+        "stylelint-prettier": "^2.0.0"
+      }
+    }
+  }
+}

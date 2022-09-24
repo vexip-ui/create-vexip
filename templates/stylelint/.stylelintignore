@@ -1,0 +1,13 @@
+assets/
+dist/
+public/
+node_modules/
+scripts/
+.husky/
+
+*.js
+*.ts
+*.tsx
+*.svg
+*.gif
+*.md

@@ -1,0 +1,15 @@
+{
+  "name": "vexip-commitlint-starter",
+  "scripts": {
+    "precommit": "lint-staged -c ./.husky/.lintstagedrc -q",
+    "prepare": "is-ci || husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "husky": "^8.0.1",
+    "is-ci": "^3.0.1",
+    "lint-staged": "^13.0.3"
+  },
+  "extra": {}
+}

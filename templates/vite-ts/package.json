@@ -1,0 +1,28 @@
+{
+  "name": "vexip-vite-ts-starter",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vexip-ui/icons": "^1.0.2",
+    "vexip-ui": "^2.0.4",
+    "vue": "^3.2.39",
+    "vue-router": "^4.1.1"
+  },
+  "devDependencies": {
+    "@vexip-ui/plugins": "^1.0.0",
+    "@vitejs/plugin-vue": "^3.1.0",
+    "@vitejs/plugin-vue-jsx": "^2.0.0",
+    "sass": "^1.53.0",
+    "typescript": "^4.8.3",
+    "unplugin-auto-import": "^0.11.2",
+    "unplugin-vue-components": "^0.22.7",
+    "vite": "^3.1.3",
+    "vue-tsc": "^0.40.13"
+  }
+}
