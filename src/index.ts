@@ -2,7 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import minimist from 'minimist'
-import { reset, blue, red, cyan, yellow } from 'kolorist'
+import { reset, lightGreen, red, cyan, yellow } from 'kolorist'
 import prompts from 'prompts'
 import { patchCommitlint } from './patch-commitlint'
 import { patchStylelint } from './patch-stylelint'
@@ -35,7 +35,7 @@ const templates: Template[] = [
   {
     name: 'vite-ts',
     display: 'Vite + TypeScript',
-    color: blue
+    color: cyan
   }
 ]
 const templateNames = templates.map(t => t.name)
@@ -57,14 +57,9 @@ const extraTemplates: Template[] = [
     color: yellow
   },
   {
-    name: 'pinia',
-    display: 'Pinia',
-    color: cyan
-  },
-  {
     name: 'router',
     display: 'Vue Router',
-    color: cyan
+    color: lightGreen
   }
 ]
 const extraTemplateNames = extraTemplates.map(t => t.name)
