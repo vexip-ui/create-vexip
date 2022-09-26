@@ -1,0 +1,12 @@
+dist/
+node_modules/
+public/
+.husky/
+
+.*rc.js
+*.config.js
+*.css
+*.pcss
+*.scss
+*.json
+*.md

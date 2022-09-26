@@ -1,0 +1,9 @@
+dist/
+public/
+node_modules/
+*.js
+*.ts
+*.tsx
+*.svg
+*.gif
+*.md

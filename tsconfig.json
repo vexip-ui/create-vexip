@@ -15,9 +15,19 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "outDir": "dist"
+    "outDir": "dist",
+    "types": [
+      "vite/client",
+      "vexip-ui/types"
+    ],
+    "lib": [
+      "esnext",
+      "dom"
+    ]
   },
   "include": [
-    "src"
+    "src",
+    "templates",
+    "global.d.ts"
   ]
 }
