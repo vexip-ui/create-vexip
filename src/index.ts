@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 import minimist from 'minimist'
 import { reset, lightGreen, red, cyan, yellow } from 'kolorist'
 import prompts from 'prompts'
+import ncu from 'npm-check-updates'
 import { patchCommitlint } from './patch-commitlint'
 import { patchStylelint } from './patch-stylelint'
 
@@ -19,7 +20,8 @@ interface PromptResult {
   packageName: string,
   template: string,
   extraTemplates: string[],
-  commitlint: boolean
+  commitlint: boolean,
+  updateDeps: boolean
 }
 
 const args = minimist<{
@@ -149,7 +151,14 @@ async function main() {
         {
           type: extra => extra.find((t: string) => ['eslint', 'stylelint', 'prettier'].includes(t)) ? 'confirm' : null,
           name: 'commitlint',
-          message: reset('Using commitlint and husky?')
+          message: reset('Use commitlint and husky?'),
+          initial: true
+        },
+        {
+          type: 'confirm',
+          name: 'updateDeps',
+          message: reset('Update dependencies version?'),
+          initial: true
         }
       ],
       {
@@ -163,10 +172,11 @@ async function main() {
     return
   }
 
-  const { overwrite, packageName, template, extraTemplates: extraTemps, commitlint } = result
+  const { overwrite, packageName, template, extraTemplates: extraTemps, commitlint, updateDeps } = result
   const root = path.join(cwd, targetDir)
 
   if (overwrite) {
+    console.log(`\nEmptying ${root}...`)
     emptyDir(root)
   } else if (!fs.existsSync(root)) {
     fs.mkdirSync(root, { recursive: true })
@@ -198,7 +208,7 @@ async function main() {
     write(file)
   }
 
-  const pkg = JSON.parse(
+  let pkg = JSON.parse(
     fs.readFileSync(path.join(templateDir, `package.json`), 'utf-8')
   )
 
@@ -258,6 +268,10 @@ async function main() {
 
     pkg[key] = map
   })
+
+  if (updateDeps) {
+    pkg = await ncu({ packageData: pkg, jsonAll: true })
+  }
 
   write('package.json', JSON.stringify(pkg, null, 2))
 
