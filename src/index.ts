@@ -27,8 +27,12 @@ interface PromptResult {
 const args = minimist<{
   t?: string,
   template?: string,
-  e?: string | string[],
-  extra?: string | string[]
+  e?: boolean | string | string[],
+  extra?: boolean | string | string[],
+  c?: boolean,
+  commitlint?: boolean,
+  u?: boolean,
+  update?: boolean
 }>(process.argv.slice(2), { string: ['_'] })
 
 const cwd = process.cwd()
@@ -75,20 +79,27 @@ const renameFiles: Record<string, string | undefined> = {
 async function main() {
   const argTargetDir = formatTargetDir(args._[0])
   const argTemplate = args.template || args.t
-  const argExtraTemplates = (args.extra || args.e ? ensureArray(args.extra || args.e) : [])
-    .filter(name => name && extraTemplateNames.includes(name))
+  const argExtra = args.extra || args.e
+  const argCommitlint = args.commitlint || args.c
+  const aggUpdateDeps = args.update || args.u
 
+  let argExtraTemplates: string[]
   let targetDir = argTargetDir || defaultTargetDir
+  let result: PromptResult
+
+  if (typeof argExtra === 'boolean') {
+    argExtraTemplates = argExtra ? extraTemplateNames : []
+  } else {
+    argExtraTemplates = (argExtra ? ensureArray(argExtra) : []).filter(name => name && extraTemplateNames.includes(name))
+  }
 
   const getProjectName = () => targetDir === '.' ? path.basename(path.resolve()) : targetDir
-
-  let result: PromptResult
 
   try {
     result = await prompts(
       [
         {
-          type: 'text',
+          type: argTargetDir ? null : 'text',
           name: 'projectName',
           message: reset('Project name:'),
           initial: defaultTargetDir,
@@ -139,23 +150,26 @@ async function main() {
           }))
         },
         {
-          type: 'multiselect',
+          type: argExtraTemplates.length ? null : 'multiselect',
           name: 'extraTemplates',
           message: reset('Select extra teamplates:'),
           choices: extraTemplates.map(t => ({
             title: t.color(t.display || t.name),
-            value: t.name,
-            selected: argExtraTemplates.includes(t.name)
-          }))
+            value: t.name
+          })),
+          onState: state => {
+            const value = state.value as { value: string, selected: boolean }[]
+            argExtraTemplates = value.filter(({ selected }) => selected).map(({ value }) => value)
+          }
         },
         {
-          type: extra => extra.find((t: string) => ['eslint', 'stylelint', 'prettier'].includes(t)) ? 'confirm' : null,
+          type: argExtraTemplates.find((t: string) => ['eslint', 'stylelint', 'prettier'].includes(t)) ? argCommitlint !== undefined ? null : 'confirm' : null,
           name: 'commitlint',
           message: reset('Use commitlint and husky?'),
           initial: true
         },
         {
-          type: 'confirm',
+          type: aggUpdateDeps !== undefined ? null : 'confirm',
           name: 'updateDeps',
           message: reset('Update dependencies version?'),
           initial: true
@@ -172,7 +186,10 @@ async function main() {
     return
   }
 
-  const { overwrite, packageName, template, extraTemplates: extraTemps, commitlint, updateDeps } = result
+  const { overwrite, packageName } = result
+  const template = result.template || argTemplate!
+  const commitlint = result.commitlint ?? argCommitlint!
+  const updateDeps = result.updateDeps ?? aggUpdateDeps!
   const root = path.join(cwd, targetDir)
 
   if (overwrite) {
@@ -183,7 +200,7 @@ async function main() {
   }
 
   if (commitlint) {
-    extraTemps.push('commitlint')
+    argExtraTemplates.push('commitlint')
   }
 
   const pkgInfo = pkgFromUserAgent(process.env.npm_config_user_agent)
@@ -209,12 +226,12 @@ async function main() {
   }
 
   let pkg = JSON.parse(
-    fs.readFileSync(path.join(templateDir, `package.json`), 'utf-8')
+    fs.readFileSync(path.join(templateDir, 'package.json'), 'utf-8')
   )
 
   pkg.name = packageName || getProjectName()
 
-  extraTemps.forEach(name => {
+  argExtraTemplates.forEach(name => {
     const dir = path.resolve(fileURLToPath(import.meta.url), '../../templates', name)
 
     for (const file of fs.readdirSync(dir).filter((f) => f !== 'package.json')) {
@@ -222,14 +239,14 @@ async function main() {
     }
 
     const extraPkg = JSON.parse(
-      fs.readFileSync(path.join(dir, `package.json`), 'utf-8')
+      fs.readFileSync(path.join(dir, 'package.json'), 'utf-8')
     )
 
     const { scripts = {}, devDependencies = {}, dependencies = {}, extra } = extraPkg
 
     if (extra) {
       Object.keys(extraPkg.extra).forEach(extraName => {
-        if (extraTemps.includes(extraName) || extraName === template) {
+        if (argExtraTemplates.includes(extraName) || extraName === template) {
           Object.assign(devDependencies, extra[extraName].devDependencies ?? {})
           Object.assign(dependencies, extra[extraName].dependencies ?? {})
         }
@@ -243,12 +260,12 @@ async function main() {
 
   const patchFiles: Record<string, string> = {}
 
-  if (extraTemps.includes('stylelint')) {
-    Object.assign(patchFiles, patchStylelint(extraTemps))
+  if (argExtraTemplates.includes('stylelint')) {
+    Object.assign(patchFiles, patchStylelint(argExtraTemplates))
   }
 
   if (commitlint) {
-    Object.assign(patchFiles, patchCommitlint(extraTemps))
+    Object.assign(patchFiles, patchCommitlint(argExtraTemplates))
   }
 
   Object.keys(patchFiles).forEach(name => {
