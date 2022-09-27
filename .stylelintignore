@@ -2,6 +2,8 @@ dist/
 public/
 node_modules/
 *.js
+*.cjs
+*.mjs
 *.ts
 *.tsx
 *.svg

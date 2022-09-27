@@ -63,9 +63,9 @@ Currently supported extra templates:
 
 ## Command Line Options
 
-| Param | Abbr | Type | Description |
-| --- | --- | --- | --- |
-| `--template` | `-t` | `string` | Specify a base template |
-| `--extra` | `-e` | `boolean \| string \| string[]` | Specify some extra templates, all extra templates will be used if not specify names |
-| `--commitlint` | `-c` | `boolean` | Whether using commitlint with husky and lint-staged, it requires at least one lint tool to be used  |
-| `--update` | `-u` | `boolean` | Whether using npm-check-updates to update dependencies in package.json |
+| Param          | Abbr | Type                            | Description                                                                                        |
+| -------------- | ---- | ------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `--template`   | `-t` | `string`                        | Specify a base template                                                                            |
+| `--extra`      | `-e` | `boolean \| string \| string[]` | Specify some extra templates, all extra templates will be used if not specify names                |
+| `--commitlint` | `-c` | `boolean`                       | Whether using commitlint with husky and lint-staged, it requires at least one lint tool to be used |
+| `--update`     | `-u` | `boolean`                       | Whether using npm-check-updates to update dependencies in package.json                             |
