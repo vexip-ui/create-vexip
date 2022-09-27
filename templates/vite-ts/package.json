@@ -10,11 +10,11 @@
   },
   "dependencies": {
     "@vexip-ui/icons": "^1.0.2",
-    "vexip-ui": "^2.0.4",
+    "vexip-ui": "^2.0.5",
     "vue": "^3.2.39"
   },
   "devDependencies": {
-    "@vexip-ui/plugins": "^1.0.0",
+    "@vexip-ui/plugins": "^1.0.1",
     "@vitejs/plugin-vue": "^3.1.0",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
     "sass": "^1.55.0",
