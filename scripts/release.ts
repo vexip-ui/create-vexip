@@ -1,18 +1,23 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import minimist from 'minimist'
 import semver from 'semver'
 import prompts from 'prompts'
-import { logger, run, dryRun } from './utils'
+// @ts-ignore
+import { logger, run, dryRun } from './utils.ts'
 
 import type { ReleaseType } from 'semver'
 
-const args = require('minimist')(process.argv.slice(2))
+const args = minimist<{
+  d?: boolean,
+  dry?: boolean
+  t?: string,
+  tag?: string
+}>(process.argv.slice(2))
 
 const isDryRun = args.dry || args.d
-const skipTests = args.skipTests || args.t
-const skipBuild = args.skipBuild || args.b
-const skipPush = args.skipPush || args.s
-const releaseTag = args.tag
+const releaseTag = args.tag || args.t
 
 const runIfNotDry = isDryRun ? dryRun : run
 const logStep = (msg: string) => logger.withStartLn(() => logger.infoText(msg))
@@ -24,8 +29,9 @@ main().catch(error => {
 })
 
 async function main() {
+  const rootDir = path.resolve(fileURLToPath(import.meta.url), '../..')
   const pkg = JSON.parse(
-    fs.readFileSync(path.join(__dirname, '../package.json'), 'utf-8')
+    fs.readFileSync(path.join(rootDir, 'package.json'), 'utf-8')
   )
   const currentVersion = pkg.version
   const preId = args.preid || args.p || (semver.prerelease(currentVersion)?.[0])
@@ -75,7 +81,7 @@ async function main() {
   // 执行单元测试
   logStep('Running test...')
 
-  if (!skipTests && !isDryRun) {
+  if (!isDryRun) {
     await run('pnpm', ['test'])
   } else {
     logSkipped()
@@ -84,12 +90,12 @@ async function main() {
   logStep('Updating version...')
 
   pkg.version = version
-  fs.writeFileSync(path.resolve(__dirname, '../package.json'), JSON.stringify(pkg, null, 2) + '\n')
+  fs.writeFileSync(path.resolve(rootDir, 'package.json'), JSON.stringify(pkg, null, 2) + '\n')
 
   // 构建库
   logStep('Building package...')
 
-  if (!skipBuild && !isDryRun) {
+  if (!isDryRun) {
     await run('pnpm', ['build'])
   } else {
     logSkipped()
@@ -136,8 +142,8 @@ async function main() {
   try {
     await run('pnpm', publishArgs, { stdio: 'pipe' })
     logger.successText(`Successfully published v${version}'`)
-  } catch (err) {
-    if (err.stderr.match(/previously published/)) {
+  } catch (err: any) {
+    if (err.stderr?.match(/previously published/)) {
       logger.errorText(`Skipping already published v'${version}'`)
     } else {
       throw err
@@ -147,12 +153,8 @@ async function main() {
   // 推送到远程仓库
   logStep('Pushing to Remote Repository...')
 
-  if (!skipPush) {
-    await runIfNotDry('git', ['push', 'origin', `refs/tags/v${version}`])
-    await runIfNotDry('git', ['push'])
-  } else {
-    logSkipped()
-  }
+  await runIfNotDry('git', ['push', 'origin', `refs/tags/v${version}`])
+  await runIfNotDry('git', ['push'])
 
   logger.withBothLn(() => {
     if (isDryRun) {
