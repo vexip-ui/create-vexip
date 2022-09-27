@@ -3,10 +3,13 @@ import { defineBuildConfig } from 'unbuild'
 export default defineBuildConfig({
   entries: ['src/index'],
   clean: true,
+  stub: true,
   rollup: {
     inlineDependencies: true,
+    // cjsBridge: true,
     esbuild: {
-      minify: true
+      // minify: true,
+      sourceMap: true
     }
   },
   alias: {

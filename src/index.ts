@@ -4,7 +4,6 @@ import { fileURLToPath } from 'node:url'
 import minimist from 'minimist'
 import { reset, lightGreen, red, cyan, yellow } from 'kolorist'
 import prompts from 'prompts'
-import ncu from 'npm-check-updates'
 import { patchCommitlint } from './patch-commitlint'
 import { patchStylelint } from './patch-stylelint'
 
@@ -287,7 +286,7 @@ async function main() {
   })
 
   if (updateDeps) {
-    pkg = await ncu({ packageData: pkg, jsonAll: true })
+    pkg = await (await import('npm-check-updates')).run({ packageData: pkg, jsonAll: true })
   }
 
   write('package.json', JSON.stringify(pkg, null, 2))

@@ -1,6 +1,6 @@
 {
   "name": "create-vexip",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": "qmhc",
   "bin": {
@@ -70,6 +70,7 @@
     "stylelint-order": "^5.0.0",
     "stylelint-prettier": "^2.0.0",
     "ts-node": "^10.9.1",
+    "tsup": "^6.2.3",
     "typescript": "^4.8.3",
     "unbuild": "^0.8.11",
     "unplugin-auto-import": "^0.11.2",

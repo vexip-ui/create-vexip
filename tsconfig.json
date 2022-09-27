@@ -23,7 +23,10 @@
     "lib": [
       "esnext",
       "dom"
-    ]
+    ],
+    "paths": {
+      "prompts": ["prompts/lib/index.js"]
+    }
   },
   "include": [
     "scripts",
