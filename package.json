@@ -1,6 +1,6 @@
 {
   "name": "create-vexip",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "license": "MIT",
   "author": "qmhc",
   "bin": {
@@ -51,7 +51,10 @@
     "eslint": "^8.19.0",
     "execa": "^6.1.0",
     "fs-extra": "^10.1.0",
+    "husky": "^8.0.1",
+    "is-ci": "^3.0.1",
     "kolorist": "^1.6.0",
+    "lint-staged": "^13.0.3",
     "minimist": "^1.2.6",
     "npm-check-updates": "^16.3.2",
     "pinia": "^2.0.22",
