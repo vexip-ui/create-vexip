@@ -114,7 +114,7 @@ async function main() {
             (targetDir === '.'
               ? 'Current directory'
               : `Target directory '${targetDir}'`) +
-            ` is not empty. Remove existing files and continue?`
+            ' is not empty. Remove existing files and continue?'
         },
         {
           type: (_, { overwrite }: { overwrite?: boolean }) => {
@@ -140,7 +140,7 @@ async function main() {
               typeof argTemplate === 'string' && !templateNames.includes(argTemplate)
                 ? reset(
                     `'${argTemplate}' isn't a valid template. Please choose from below: `
-                  )
+                )
                 : reset('Select a template:'),
           initial: 0,
           choices: templates.map(t => ({
@@ -291,7 +291,7 @@ async function main() {
 
   write('package.json', JSON.stringify(pkg, null, 2))
 
-  console.log(`\nDone. Now run:\n`)
+  console.log('\nDone. Now run:\n')
 
   if (root !== cwd) {
     console.log(`  cd ${path.relative(cwd, root)}`)

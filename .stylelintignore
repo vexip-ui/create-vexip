@@ -1,6 +1,8 @@
-dist/
-public/
-node_modules/
+dist
+public
+node_modules
+.husky
+
 *.js
 *.cjs
 *.mjs

@@ -1,11 +1,14 @@
-assets/
-dist/
-public/
-node_modules/
-scripts/
-.husky/
+node_modules
+dist
+public
+output
+coverage
+temp
+.husky
 
 *.js
+*.cjs
+*.mjs
 *.ts
 *.tsx
 *.svg

@@ -1,18 +1,10 @@
 {
   "name": "vexip-eslint-starter",
   "scripts": {
-    "lint": "eslint --fix --ext .js,.ts,.tsx,.vue src/**"
+    "lint": "eslint --fix --ext .js,.cjs,.mjs,.ts,.tsx,.vue src/**"
   },
   "devDependencies": {
-    "@vue/eslint-config-typescript": "^11.0.2",
-    "eslint": "^8.24.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.3.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.1",
-    "eslint-plugin-vue": "^9.5.1",
-    "vue-eslint-parser": "^9.1.0"
+    "@vexip-ui/eslint-config": "^0.1.1"
   },
   "extra": {}
 }

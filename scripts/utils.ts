@@ -9,9 +9,19 @@ type LogFn = () => void
 
 export const logger = {
   ln: () => console.log(),
-  withStartLn: (log: LogFn) => (logger.ln(), log()),
-  withEndLn: (log: LogFn) => (log(), logger.ln()),
-  withBothLn: (log: LogFn) => (logger.ln(), log(), logger.ln()),
+  withStartLn: (log: LogFn) => {
+    logger.ln()
+    log()
+  },
+  withEndLn: (log: LogFn) => {
+    log()
+    logger.ln()
+  },
+  withBothLn: (log: LogFn) => {
+    logger.ln()
+    log()
+    logger.ln()
+  },
   warning: (msg: string) => {
     console.warn(`${bgYellow(' WARNING ')} ${yellow(msg)}`)
   },

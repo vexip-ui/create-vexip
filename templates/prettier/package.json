@@ -4,6 +4,7 @@
     "prettier": "prettier --write \"src/**/*.{ts,js,json,css,pcss,scss,vue,html,md}\""
   },
   "devDependencies": {
+    "@vexip-ui/prettier-config": "^0.1.0",
     "prettier": "^2.7.1"
   },
   "extra": {}
