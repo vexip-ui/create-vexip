@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 import minimist from 'minimist'
 import semver from 'semver'
 import prompts from 'prompts'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { logger, run, dryRun } from './utils.ts'
 
@@ -11,7 +12,7 @@ import type { ReleaseType } from 'semver'
 
 const args = minimist<{
   d?: boolean,
-  dry?: boolean
+  dry?: boolean,
   t?: string,
   tag?: string
 }>(process.argv.slice(2))
@@ -72,7 +73,7 @@ async function main() {
     {
       type: 'confirm',
       name: 'confirm',
-      message: `Confirm release ${version}?`
+      message: `Confirm release v${version}?`
     }
   ])
 

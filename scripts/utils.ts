@@ -38,10 +38,6 @@ export const logger = {
   }
 }
 
-export function bin(name: string) {
-  return resolve(__dirname, '../node_modules/.bin/' + name)
-}
-
 export async function run(bin: string, args: string[], opts: Options = {}) {
   return await execa(bin, args, { stdio: 'inherit', ...opts })
 }
