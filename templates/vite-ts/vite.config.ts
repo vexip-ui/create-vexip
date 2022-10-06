@@ -10,14 +10,18 @@ export default defineConfig({
     vue(),
     vueJsx(),
     autoImport({
-      resolvers: [
-        VexipUIResolver()
+      vueTemplate: true,
+      resolvers: [VexipUIResolver()],
+      imports: [
+        {
+          '@vexip-ui/icons': Object.keys(await import('@vexip-ui/icons')).map(name =>
+            name.match(/^I[0-9]/) ? name : [name, `I${name}`]
+          )
+        }
       ]
     }),
     components({
-      resolvers: [
-        VexipUIResolver()
-      ]
+      resolvers: [VexipUIResolver()]
     })
   ]
 })

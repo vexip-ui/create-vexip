@@ -14,7 +14,7 @@
     "vue": "^3.2.39"
   },
   "devDependencies": {
-    "@vexip-ui/plugins": "^1.0.1",
+    "@vexip-ui/plugins": "^1.1.0",
     "@vitejs/plugin-vue": "^3.1.0",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
     "sass": "^1.55.0",
