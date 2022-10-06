@@ -1,6 +1,6 @@
 {
   "name": "create-vexip",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "author": "qmhc",
   "bin": {
@@ -48,6 +48,7 @@
     "@vexip-ui/utils": "^1.7.0",
     "@vitejs/plugin-vue": "^3.1.0",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
+    "conventional-changelog-cli": "^2.2.2",
     "eslint": "^8.19.0",
     "execa": "^6.1.0",
     "fs-extra": "^10.1.0",
