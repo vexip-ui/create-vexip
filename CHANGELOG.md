@@ -1,3 +1,9 @@
+## [0.2.2](https://github.com/vexip-ui/create-vexip/compare/v0.2.1...v0.2.2) (2022-10-07)
+
+### Bug Fixes
+
+- incorrect stylelint config file extension ([5bafb84](https://github.com/vexip-ui/create-vexip/commit/5bafb84541adb5015e95dff67e6a2acca599128c))
+
 ## [0.2.1](https://github.com/vexip-ui/create-vexip/compare/v0.1.2...v0.2.1) (2022-10-06)
 
 ### Bug Fixes
