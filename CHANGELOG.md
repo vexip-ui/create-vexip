@@ -1,3 +1,9 @@
+## [0.2.3](https://github.com/vexip-ui/create-vexip/compare/v0.2.2...v0.2.3) (2022-10-07)
+
+### Bug Fixes
+
+- add missing dependencies ([aca1f82](https://github.com/vexip-ui/create-vexip/commit/aca1f82f8c35985d372c28eb102fed152fef5cb3))
+
 ## [0.2.2](https://github.com/vexip-ui/create-vexip/compare/v0.2.1...v0.2.2) (2022-10-07)
 
 ### Bug Fixes
