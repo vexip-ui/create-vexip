@@ -4,7 +4,8 @@
     "lint:style": "stylelint **/*.{vue,css,scss} --fix"
   },
   "devDependencies": {
-    "@vexip-ui/stylelint-config": "^0.1.1"
+    "@vexip-ui/stylelint-config": "^0.1.1",
+    "stylelint": "^14.13.0"
   },
   "extra": {
     "prettier": {
