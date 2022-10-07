@@ -89,10 +89,12 @@ async function main() {
   if (typeof argExtra === 'boolean') {
     argExtraTemplates = argExtra ? extraTemplateNames : []
   } else {
-    argExtraTemplates = (argExtra ? ensureArray(argExtra) : []).filter(name => name && extraTemplateNames.includes(name))
+    argExtraTemplates = (argExtra ? ensureArray(argExtra) : []).filter(
+      name => name && extraTemplateNames.includes(name)
+    )
   }
 
-  const getProjectName = () => targetDir === '.' ? path.basename(path.resolve()) : targetDir
+  const getProjectName = () => (targetDir === '.' ? path.basename(path.resolve()) : targetDir)
 
   try {
     result = await prompts(
@@ -107,13 +109,10 @@ async function main() {
           }
         },
         {
-          type: () =>
-            !fs.existsSync(targetDir) || isEmpty(targetDir) ? null : 'confirm',
+          type: () => (!fs.existsSync(targetDir) || isEmpty(targetDir) ? null : 'confirm'),
           name: 'overwrite',
           message: () =>
-            (targetDir === '.'
-              ? 'Current directory'
-              : `Target directory '${targetDir}'`) +
+            (targetDir === '.' ? 'Current directory' : `Target directory '${targetDir}'`) +
             ' is not empty. Remove existing files and continue?'
         },
         {
@@ -130,18 +129,15 @@ async function main() {
           name: 'packageName',
           message: reset('Package name:'),
           initial: () => toValidPackageName(getProjectName()),
-          validate: dir =>
-            isValidPackageName(dir) || 'Invalid package.json name'
+          validate: dir => isValidPackageName(dir) || 'Invalid package.json name'
         },
         {
           type: argTemplate && templateNames.includes(argTemplate) ? null : 'select',
           name: 'template',
           message:
-              typeof argTemplate === 'string' && !templateNames.includes(argTemplate)
-                ? reset(
-                    `'${argTemplate}' isn't a valid template. Please choose from below: `
-                )
-                : reset('Select a template:'),
+            typeof argTemplate === 'string' && !templateNames.includes(argTemplate)
+              ? reset(`'${argTemplate}' isn't a valid template. Please choose from below: `)
+              : reset('Select a template:'),
           initial: 0,
           choices: templates.map(t => ({
             title: t.color(t.display || t.name),
@@ -162,7 +158,12 @@ async function main() {
           }
         },
         {
-          type: argExtraTemplates.find((t: string) => ['eslint', 'stylelint', 'prettier'].includes(t)) ? argCommitlint !== undefined ? null : 'confirm' : null,
+          type: () =>
+            argExtraTemplates.find((t: string) => ['eslint', 'stylelint', 'prettier'].includes(t))
+              ? argCommitlint !== undefined
+                ? null
+                : 'confirm'
+              : null,
           name: 'commitlint',
           message: reset('Use commitlint and husky?'),
           initial: true
@@ -220,26 +221,22 @@ async function main() {
     }
   }
 
-  for (const file of fs.readdirSync(templateDir).filter((f) => f !== 'package.json')) {
+  for (const file of fs.readdirSync(templateDir).filter(f => f !== 'package.json')) {
     write(file)
   }
 
-  let pkg = JSON.parse(
-    fs.readFileSync(path.join(templateDir, 'package.json'), 'utf-8')
-  )
+  let pkg = JSON.parse(fs.readFileSync(path.join(templateDir, 'package.json'), 'utf-8'))
 
   pkg.name = packageName || getProjectName()
 
   argExtraTemplates.forEach(name => {
     const dir = path.resolve(fileURLToPath(import.meta.url), '../../templates', name)
 
-    for (const file of fs.readdirSync(dir).filter((f) => f !== 'package.json')) {
+    for (const file of fs.readdirSync(dir).filter(f => f !== 'package.json')) {
       write(file, undefined, dir)
     }
 
-    const extraPkg = JSON.parse(
-      fs.readFileSync(path.join(dir, 'package.json'), 'utf-8')
-    )
+    const extraPkg = JSON.parse(fs.readFileSync(path.join(dir, 'package.json'), 'utf-8'))
 
     const { scripts = {}, devDependencies = {}, dependencies = {}, extra } = extraPkg
 
@@ -270,7 +267,6 @@ async function main() {
   Object.keys(patchFiles).forEach(name => {
     write(name, patchFiles[name])
   })
-
   ;[
     { key: 'dependencies', origin: pkg.dependencies },
     { key: 'devDependencies', origin: pkg.devDependencies }
@@ -336,9 +332,7 @@ function emptyDir(dir: string) {
 }
 
 function isValidPackageName(projectName: string) {
-  return /^(?:@[a-z0-9-*~][a-z0-9-*._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/.test(
-    projectName
-  )
+  return /^(?:@[a-z0-9-*~][a-z0-9-*._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/.test(projectName)
 }
 
 function toValidPackageName(projectName: string) {
