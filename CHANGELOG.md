@@ -1,3 +1,9 @@
+## [0.2.4](https://github.com/vexip-ui/create-vexip/compare/v0.2.3...v0.2.4) (2022-10-07)
+
+### Bug Fixes
+
+- no prompt for commitlint and husky ([3ddca03](https://github.com/vexip-ui/create-vexip/commit/3ddca03dfcee7285ed23f4d21ef62e252628831c))
+
 ## [0.2.3](https://github.com/vexip-ui/create-vexip/compare/v0.2.2...v0.2.3) (2022-10-07)
 
 ### Bug Fixes
