@@ -1,3 +1,14 @@
+# [0.3.0](https://github.com/vexip-ui/create-vexip/compare/v0.2.4...v0.3.0) (2022-10-15)
+
+### Bug Fixes
+
+- deprecat built-in npm-check-updates ([1ea584e](https://github.com/vexip-ui/create-vexip/commit/1ea584ea44ba428c0c67f159bc7821dee0b5dacf))
+
+### BREAKING CHANGES
+
+- npm-check-updates will occur a error after build-in, so
+  we deprecat it temporarily.
+
 ## [0.2.4](https://github.com/vexip-ui/create-vexip/compare/v0.2.3...v0.2.4) (2022-10-07)
 
 ### Bug Fixes
