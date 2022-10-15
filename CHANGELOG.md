@@ -1,3 +1,9 @@
+## [0.3.1](https://github.com/vexip-ui/create-vexip/compare/v0.3.0...v0.3.1) (2022-10-15)
+
+### Bug Fixes
+
+- adjust icon to auto import ([67eaa62](https://github.com/vexip-ui/create-vexip/commit/67eaa621737705f87a8f5a01b12d8668025379d0))
+
 # [0.3.0](https://github.com/vexip-ui/create-vexip/compare/v0.2.4...v0.3.0) (2022-10-15)
 
 ### Bug Fixes
