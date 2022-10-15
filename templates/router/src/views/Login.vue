@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
-import { Lock, User } from '@vexip-ui/icons'
 
 interface Model {
   username: string,
@@ -33,10 +32,10 @@ const providedProps = {
     <ConfigProvider :props="providedProps">
       <Form class="login__form" :model="model" hide-label>
         <FormItem prop="username">
-          <Input placeholder="Please input username" :prefix="User"></Input>
+          <Input placeholder="Please input username" :prefix="IUser"></Input>
         </FormItem>
         <FormItem prop="password">
-          <Input placeholder="Please input password" type="password" :prefix="Lock"></Input>
+          <Input placeholder="Please input password" type="password" :prefix="ILock"></Input>
         </FormItem>
         <FormItem action>
           <Button type="success">
@@ -49,9 +48,7 @@ const providedProps = {
       </Form>
     </ConfigProvider>
     <div class="login__tip">
-      <Divider>
-        Click on the Vexip UI logo to learn more
-      </Divider>
+      <Divider> Click on the Vexip UI logo to learn more </Divider>
     </div>
   </Card>
 </template>
