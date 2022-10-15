@@ -13,7 +13,7 @@
     "preinstall": "npx only-allow pnpm",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path .",
     "test": "vitest run",
-    "release": "ts-node --esm scripts/release.ts",
+    "release": "tsx scripts/release.ts",
     "precommit": "lint-staged -c ./.husky/.lintstagedrc -q --allow-empty",
     "prepare": "is-ci || husky install"
   },
@@ -64,8 +64,8 @@
     "semver": "^7.3.8",
     "stylelint": "^14.13.0",
     "stylelint-prettier": "^2.0.0",
-    "ts-node": "^10.9.1",
     "tsup": "^6.2.3",
+    "tsx": "^3.10.1",
     "typescript": "^4.8.4",
     "unbuild": "^0.9.1",
     "unplugin-auto-import": "^0.11.2",
@@ -75,5 +75,12 @@
     "vitest": "^0.24.3",
     "vue": "^3.2.41",
     "vue-router": "^4.1.5"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "rollup": "^3.0.0"
+      }
+    }
   }
 }
