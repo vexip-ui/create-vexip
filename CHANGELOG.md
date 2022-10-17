@@ -1,3 +1,9 @@
+# [0.4.0](https://github.com/vexip-ui/create-vexip/compare/v0.3.1...v0.4.0) (2022-10-17)
+
+### Features
+
+- use tsup for build to support ncu ([a8639d7](https://github.com/vexip-ui/create-vexip/commit/a8639d761a839a2420bda177206e92cba40a5af5))
+
 ## [0.3.1](https://github.com/vexip-ui/create-vexip/compare/v0.3.0...v0.3.1) (2022-10-15)
 
 ### Bug Fixes
