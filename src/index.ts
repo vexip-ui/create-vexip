@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 import minimist from 'minimist'
 import { reset, lightGreen, red, cyan, yellow } from 'kolorist'
 import prompts from 'prompts'
-// import ncu from 'npm-check-updates'
+import * as ncu from 'npm-check-updates'
 import { patchCommitlint } from './patch-commitlint'
 import { patchStylelint } from './patch-stylelint'
 
@@ -20,8 +20,8 @@ interface PromptResult {
   packageName: string,
   template: string,
   extraTemplates: string[],
-  commitlint: boolean
-  // updateDeps: boolean
+  commitlint: boolean,
+  updateDeps: boolean
 }
 
 const args = minimist<{
@@ -30,9 +30,9 @@ const args = minimist<{
   e?: boolean | string | string[],
   extra?: boolean | string | string[],
   c?: boolean,
-  commitlint?: boolean
-  // u?: boolean,
-  // update?: boolean
+  commitlint?: boolean,
+  u?: boolean,
+  update?: boolean
 }>(process.argv.slice(2), { string: ['_'] })
 
 const cwd = process.cwd()
@@ -81,7 +81,7 @@ async function main() {
   const argTemplate = args.template || args.t
   const argExtra = args.extra || args.e
   const argCommitlint = args.commitlint || args.c
-  // const aggUpdateDeps = args.update || args.u
+  const aggUpdateDeps = args.update || args.u
 
   let argExtraTemplates: string[]
   let targetDir = argTargetDir || defaultTargetDir
@@ -168,13 +168,13 @@ async function main() {
           name: 'commitlint',
           message: reset('Use commitlint and husky?'),
           initial: true
+        },
+        {
+          type: aggUpdateDeps !== undefined ? null : 'confirm',
+          name: 'updateDeps',
+          message: reset('Update dependencies version?'),
+          initial: true
         }
-        // {
-        //   type: aggUpdateDeps !== undefined ? null : 'confirm',
-        //   name: 'updateDeps',
-        //   message: reset('Update dependencies version?'),
-        //   initial: true
-        // }
       ],
       {
         onCancel: () => {
@@ -190,7 +190,7 @@ async function main() {
   const { overwrite, packageName } = result
   const template = result.template || argTemplate!
   const commitlint = result.commitlint ?? argCommitlint!
-  // const updateDeps = result.updateDeps ?? aggUpdateDeps!
+  const updateDeps = result.updateDeps ?? aggUpdateDeps!
   const root = path.join(cwd, targetDir)
 
   if (overwrite) {
@@ -226,7 +226,7 @@ async function main() {
     write(file)
   }
 
-  const pkg = JSON.parse(fs.readFileSync(path.join(templateDir, 'package.json'), 'utf-8'))
+  let pkg = JSON.parse(fs.readFileSync(path.join(templateDir, 'package.json'), 'utf-8'))
 
   pkg.name = packageName || getProjectName()
 
@@ -282,9 +282,9 @@ async function main() {
     pkg[key] = map
   })
 
-  // if (updateDeps) {
-  //   pkg = await ncu({ packageData: pkg, jsonAll: true })
-  // }
+  if (updateDeps) {
+    pkg = await ncu.run({ packageData: pkg, jsonAll: true })
+  }
 
   write('package.json', JSON.stringify(pkg, null, 2))
 

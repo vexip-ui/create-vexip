@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "unbuild --stub",
-    "build": "unbuild",
+    "build": "tsup",
     "prepublishOnly": "npm run build",
     "preinstall": "npx only-allow pnpm",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path .",
@@ -57,6 +57,7 @@
     "kolorist": "^1.6.0",
     "lint-staged": "^13.0.3",
     "minimist": "^1.2.7",
+    "node-gyp": "^9.3.0",
     "npm-check-updates": "^16.3.11",
     "pinia": "^2.0.23",
     "prettier": "^2.7.1",
