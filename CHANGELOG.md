@@ -1,3 +1,9 @@
+## [0.4.1](https://github.com/vexip-ui/create-vexip/compare/v0.4.0...v0.4.1) (2022-10-17)
+
+### Bug Fixes
+
+- always bundle dependencies ([1b6270e](https://github.com/vexip-ui/create-vexip/commit/1b6270ece9c79498558ece16eafaff0b84b30314))
+
 # [0.4.0](https://github.com/vexip-ui/create-vexip/compare/v0.3.1...v0.4.0) (2022-10-17)
 
 ### Features
