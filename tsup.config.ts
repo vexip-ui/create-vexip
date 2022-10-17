@@ -6,6 +6,6 @@ export default defineConfig({
   clean: true,
   format: 'esm',
   outExtension: () => ({ js: '.mjs' }),
-  onSuccess: 'tsx ./scripts/patch.ts'
-  // noExternal: ['kolorist', 'minimist', 'node-gyp', 'npm-check-updates', 'prompts']
+  onSuccess: 'tsx ./scripts/patch.ts',
+  noExternal: ['kolorist', 'minimist', 'node-gyp', 'npm-check-updates', 'prompts']
 })
