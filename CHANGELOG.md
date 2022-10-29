@@ -1,3 +1,9 @@
+# [0.5.0](https://github.com/vexip-ui/create-vexip/compare/v0.4.4...v0.5.0) (2022-10-29)
+
+### Features
+
+- switch to use taze to update deps ([557caca](https://github.com/vexip-ui/create-vexip/commit/557cacae7f6bbc677aa81ee18e4a4eecc5cb51fb))
+
 ## [0.4.4](https://github.com/vexip-ui/create-vexip/compare/v0.4.3...v0.4.4) (2022-10-17)
 
 ## [0.4.3](https://github.com/vexip-ui/create-vexip/compare/v0.4.2...v0.4.3) (2022-10-17)
