@@ -4,9 +4,10 @@ import { fileURLToPath } from 'node:url'
 import minimist from 'minimist'
 import { reset, lightGreen, red, cyan, yellow } from 'kolorist'
 import prompts from 'prompts'
-import * as ncu from 'npm-check-updates'
+// import * as ncu from 'npm-check-updates'
 import { patchCommitlint } from './patch-commitlint'
 import { patchStylelint } from './patch-stylelint'
+import { updatePackageDeps } from './update-deps'
 
 interface Template {
   name: string,
@@ -70,7 +71,7 @@ const extraTemplates: Template[] = [
 ]
 const extraTemplateNames = extraTemplates.map(t => t.name)
 
-const defaultTargetDir = 'vexip-ui-project'
+const defaultTargetDir = 'vexip-project'
 
 const renameFiles: Record<string, string | undefined> = {
   _gitignore: '.gitignore'
@@ -226,7 +227,7 @@ async function main() {
     write(file)
   }
 
-  let pkg = JSON.parse(fs.readFileSync(path.join(templateDir, 'package.json'), 'utf-8'))
+  const pkg = JSON.parse(fs.readFileSync(path.join(templateDir, 'package.json'), 'utf-8'))
 
   pkg.name = packageName || getProjectName()
 
@@ -283,7 +284,8 @@ async function main() {
   })
 
   if (updateDeps) {
-    pkg = await ncu.run({ packageData: pkg, jsonAll: true })
+    // pkg = await ncu.run({ packageData: pkg, jsonAll: true })
+    await updatePackageDeps(pkg, root)
   }
 
   write('package.json', JSON.stringify(pkg, null, 2))

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "unbuild --stub",
-    "build": "tsup",
+    "build": "unbuild",
     "prepublishOnly": "npm run build",
     "preinstall": "npx only-allow pnpm",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s --commit-path .",
@@ -33,7 +33,10 @@
   },
   "homepage": "https://github.com/vexip-ui/create-vexip",
   "dependencies": {
-    "node-gyp": "^9.3.0"
+    "kolorist": "^1.6.0",
+    "minimist": "^1.2.7",
+    "prompts": "^2.4.2",
+    "taze": "^0.8.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
@@ -57,13 +60,10 @@
     "fs-extra": "^10.1.0",
     "husky": "^8.0.1",
     "is-ci": "^3.0.1",
-    "kolorist": "^1.6.0",
     "lint-staged": "^13.0.3",
-    "minimist": "^1.2.7",
     "npm-check-updates": "^16.3.11",
     "pinia": "^2.0.23",
     "prettier": "^2.7.1",
-    "prompts": "^2.4.2",
     "semver": "^7.3.8",
     "stylelint": "^14.13.0",
     "stylelint-prettier": "^2.0.0",
