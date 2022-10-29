@@ -1,3 +1,9 @@
+## [0.5.1](https://github.com/vexip-ui/create-vexip/compare/v0.5.0...v0.5.1) (2022-10-29)
+
+### Bug Fixes
+
+- update template deps ([373fc14](https://github.com/vexip-ui/create-vexip/commit/373fc1462893c6d7c9f29092488fc23b5a5e2e60))
+
 # [0.5.0](https://github.com/vexip-ui/create-vexip/compare/v0.4.4...v0.5.0) (2022-10-29)
 
 ### Features
