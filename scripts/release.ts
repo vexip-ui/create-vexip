@@ -4,9 +4,7 @@ import { fileURLToPath } from 'node:url'
 import minimist from 'minimist'
 import semver from 'semver'
 import prompts from 'prompts'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { logger, run, dryRun } from './utils.ts'
+import { logger, run, dryRun } from './utils'
 
 import type { ReleaseType } from 'semver'
 
