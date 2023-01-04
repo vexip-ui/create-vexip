@@ -368,12 +368,15 @@ function copyDir(srcDir: string, destDir: string) {
 }
 
 function copy(src: string, dest: string) {
+  console.log(src, dest)
   const stat = fs.statSync(src)
 
   if (stat.isDirectory()) {
     copyDir(src, dest)
   } else {
-    fs.copyFileSync(src, dest)
+    const file = path.basename(dest)
+
+    fs.copyFileSync(src, path.join(path.dirname(dest), renameFiles[file] ?? file))
   }
 }
 
