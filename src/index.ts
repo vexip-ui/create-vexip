@@ -368,7 +368,6 @@ function copyDir(srcDir: string, destDir: string) {
 }
 
 function copy(src: string, dest: string) {
-  console.log(src, dest)
   const stat = fs.statSync(src)
 
   if (stat.isDirectory()) {
