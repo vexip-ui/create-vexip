@@ -1,3 +1,9 @@
+## [0.5.2](https://github.com/vexip-ui/create-vexip/compare/v0.5.1...v0.5.2) (2023-01-04)
+
+### Bug Fixes
+
+- incorrect name of deep .gitignore ([0fad74b](https://github.com/vexip-ui/create-vexip/commit/0fad74ba4ac31cdab8f3f598076b3bc8ef5292e3))
+
 ## [0.5.1](https://github.com/vexip-ui/create-vexip/compare/v0.5.0...v0.5.1) (2022-10-29)
 
 ### Bug Fixes
