@@ -1,3 +1,5 @@
+## [0.5.3](https://github.com/vexip-ui/create-vexip/compare/v0.5.2...v0.5.3) (2023-01-04)
+
 ## [0.5.2](https://github.com/vexip-ui/create-vexip/compare/v0.5.1...v0.5.2) (2023-01-04)
 
 ### Bug Fixes
