@@ -1,10 +1,11 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+
 import minimist from 'minimist'
 import semver from 'semver'
 import prompts from 'prompts'
-import { logger, run, dryRun } from './utils'
+import { dryRun, logger, run } from './utils'
 
 import type { ReleaseType } from 'semver'
 

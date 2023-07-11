@@ -1,8 +1,9 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+
 import minimist from 'minimist'
-import { reset, lightGreen, red, cyan, yellow } from 'kolorist'
+import { cyan, lightGreen, red, reset, yellow } from 'kolorist'
 import prompts from 'prompts'
 import { patchCommitlint } from './patch-commitlint'
 import { patchStylelint } from './patch-stylelint'
