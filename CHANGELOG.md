@@ -1,3 +1,9 @@
+## [0.5.6](https://github.com/vexip-ui/create-vexip/compare/v0.5.5...v0.5.6) (2023-07-11)
+
+### Bug Fixes
+
+- update base template dependencies ([51676bf](https://github.com/vexip-ui/create-vexip/commit/51676bfee41cf83d6de59cd970b1b41c00ef7c21))
+
 ## [0.5.5](https://github.com/vexip-ui/create-vexip/compare/v0.5.4...v0.5.5) (2023-07-11)
 
 ### Bug Fixes
