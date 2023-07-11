@@ -1,16 +1,16 @@
 {
   "name": "vexip-stylelint-starter",
   "scripts": {
-    "lint:style": "stylelint **/*.{vue,css,scss} --fix"
+    "lint:style": "stylelint --cache --fix \"**/*.{vue,css,scss}\""
   },
   "devDependencies": {
-    "@vexip-ui/stylelint-config": "^0.1.1",
-    "stylelint": "^14.14.0"
+    "@vexip-ui/stylelint-config": "^0.5.0",
+    "stylelint": "^15.10.1"
   },
   "extra": {
     "prettier": {
       "devDependencies": {
-        "stylelint-prettier": "^2.0.0"
+        "stylelint-prettier": "^3.0.0"
       }
     }
   }

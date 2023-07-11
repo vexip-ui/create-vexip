@@ -1,11 +1,11 @@
 {
   "name": "vexip-eslint-starter",
   "scripts": {
-    "lint": "eslint --fix --ext .js,.cjs,.mjs,.ts,.tsx,.vue src/**"
+    "lint": "eslint --cache --fix \"**/*.{js,cjs,mjs,ts,tsx,json,vue}\""
   },
   "devDependencies": {
-    "@vexip-ui/eslint-config": "^0.3.1",
-    "eslint": "^8.26.0"
+    "@vexip-ui/eslint-config": "^0.7.2",
+    "eslint": "^8.44.0"
   },
   "extra": {}
 }
