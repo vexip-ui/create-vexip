@@ -14,16 +14,10 @@
     "allowSyntheticDefaultImports": true,
     "useDefineForClassFields": true,
     "isolatedModules": true,
-    "lib": [
-      "esnext",
-      "dom"
-    ],
+    "lib": ["esnext", "dom"],
     "baseUrl": ".",
     "outDir": "dist",
-    "types": [
-      "vite/client",
-      "vexip-ui/types"
-    ]
+    "types": ["vite/client", "vexip-ui/types"]
   },
   "include": [
     "src/**/*.ts",

@@ -16,7 +16,8 @@
     "test": "vitest run",
     "release": "tsx scripts/release.ts",
     "precommit": "lint-staged -c ./.husky/.lintstagedrc -q --allow-empty",
-    "prepare": "is-ci || husky install"
+    "prepare": "is-ci || husky install",
+    "prettier": "prettier --write \"**/*.{js,cjs,mjs,ts,json,css,scss,vue,html,md}\""
   },
   "type": "module",
   "files": [
@@ -70,7 +71,7 @@
     "stylelint-prettier": "^3.0.0",
     "tsup": "^7.1.0",
     "tsx": "^3.12.7",
-    "typescript": "^5.1.6",
+    "typescript": "~5.1.6",
     "unbuild": "^1.2.1",
     "unplugin-auto-import": "^0.16.6",
     "unplugin-vue-components": "^0.25.1",

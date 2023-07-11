@@ -16,14 +16,8 @@
     "sourceMap": true,
     "baseUrl": ".",
     "outDir": "dist",
-    "types": [
-      "vite/client",
-      "vexip-ui/types"
-    ],
-    "lib": [
-      "esnext",
-      "dom"
-    ],
+    "types": ["vite/client", "vexip-ui/types"],
+    "lib": ["esnext", "dom"],
     "paths": {
       "prompts": ["prompts/lib/index.js"]
     }

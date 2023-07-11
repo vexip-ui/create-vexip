@@ -1,0 +1,15 @@
+dist
+node_modules
+public
+cache
+.husky
+
+.*rc.js
+.*rc.cjs
+*.config.js
+*.css
+*.pcss
+*.scss
+*.svg
+
+templates/eslint

@@ -25,7 +25,7 @@ const providedProps = {
       <Linker to="https://www.vexipui.com/">
         <img src="/vexip-ui.svg" class="login__logo" alt="Vexip UI Logo" />
       </Linker>
-      <H1 style="margin: 0;">
+      <H1 style="margin: 0">
         Vexip UI
       </H1>
     </Row>
