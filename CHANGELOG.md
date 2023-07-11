@@ -1,3 +1,10 @@
+## [0.5.8](https://github.com/vexip-ui/create-vexip/compare/v0.5.7...v0.5.8) (2023-07-11)
+
+### Bug Fixes
+
+- update template eslint-config version ([41feea8](https://github.com/vexip-ui/create-vexip/commit/41feea8852f20a2002b7be04f7f63a22f408134d))
+- update template lint config versions ([a26d177](https://github.com/vexip-ui/create-vexip/commit/a26d1771714699a8f7251e04326f3a09e5aa2d49))
+
 ## [0.5.7](https://github.com/vexip-ui/create-vexip/compare/v0.5.6...v0.5.7) (2023-07-11)
 
 ### Bug Fixes
