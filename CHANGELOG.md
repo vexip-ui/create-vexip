@@ -1,3 +1,9 @@
+## [0.5.5](https://github.com/vexip-ui/create-vexip/compare/v0.5.4...v0.5.5) (2023-07-11)
+
+### Bug Fixes
+
+- add cache files to .gitignore ([dde104d](https://github.com/vexip-ui/create-vexip/commit/dde104de061d4599d094265dc7d60510cd8f821c))
+
 ## [0.5.4](https://github.com/vexip-ui/create-vexip/compare/v0.5.3...v0.5.4) (2023-07-11)
 
 ### Bug Fixes
