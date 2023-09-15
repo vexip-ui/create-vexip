@@ -1,3 +1,9 @@
+# [0.6.0](https://github.com/vexip-ui/create-vexip/compare/v0.5.8...v0.6.0) (2023-09-15)
+
+### Features
+
+- add optimizeDeps of Vite config ([6b5a38f](https://github.com/vexip-ui/create-vexip/commit/6b5a38fbbf08840b249a8d981be75924a68bb3d4))
+
 ## [0.5.8](https://github.com/vexip-ui/create-vexip/compare/v0.5.7...v0.5.8) (2023-07-11)
 
 ### Bug Fixes
