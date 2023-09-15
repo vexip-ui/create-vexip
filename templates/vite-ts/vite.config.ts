@@ -6,6 +6,9 @@ import components from 'unplugin-vue-components/vite'
 import { VexipUIResolver } from '@vexip-ui/plugins'
 
 export default defineConfig({
+  optimizeDeps: {
+    include: ['vexip-ui', 'vexip-ui/es/css/**/*.js', 'vexip-ui/es/style/**/*.js', '@vexip-ui/icons']
+  },
   plugins: [
     vue(),
     vueJsx(),
