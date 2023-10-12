@@ -43,6 +43,11 @@ const templates: Template[] = [
     name: 'vite-ts',
     display: 'Vite + TypeScript',
     color: cyan
+  },
+  {
+    name: 'nuxt',
+    display: 'Nuxt',
+    color: lightGreen
   }
 ]
 const templateNames = templates.map(t => t.name)
@@ -71,6 +76,10 @@ const extraTemplates: Template[] = [
 ]
 const extraTemplateNames = extraTemplates.map(t => t.name)
 
+const ignoredExtra: Record<string, string[]> = {
+  nuxt: ['router']
+}
+
 const defaultTargetDir = 'vexip-project'
 
 const renameFiles: Record<string, string | undefined> = {
@@ -87,6 +96,7 @@ async function main() {
   let argExtraTemplates: string[]
   let targetDir = argTargetDir || defaultTargetDir
   let result: PromptResult
+  let ignoredExtraTemplates = argTemplate ? ignoredExtra[argTemplate] || [] : []
 
   if (typeof argExtra === 'boolean') {
     argExtraTemplates = argExtra ? extraTemplateNames : []
@@ -96,7 +106,8 @@ async function main() {
     )
   }
 
-  const getProjectName = () => (targetDir === '.' ? path.basename(path.resolve()) : targetDir)
+  const getProjectName = () =>
+    path.basename(targetDir === '.' || targetDir === './' ? path.resolve() : targetDir)
 
   try {
     result = await prompts(
@@ -114,7 +125,9 @@ async function main() {
           type: () => (!fs.existsSync(targetDir) || isEmpty(targetDir) ? null : 'confirm'),
           name: 'overwrite',
           message: () =>
-            (targetDir === '.' ? 'Current directory' : `Target directory '${targetDir}'`) +
+            (targetDir === '.' || targetDir === './'
+              ? 'Current directory'
+              : `Target directory '${targetDir}'`) +
             ' is not empty. Remove existing files and continue?'
         },
         {
@@ -144,16 +157,22 @@ async function main() {
           choices: templates.map(t => ({
             title: t.color(t.display || t.name),
             value: t.name
-          }))
+          })),
+          onState: state => {
+            ignoredExtraTemplates = ignoredExtra[state.value] || []
+          }
         },
         {
           type: argExtraTemplates.length ? null : 'multiselect',
           name: 'extraTemplates',
-          message: reset('Select extra teamplates:'),
-          choices: extraTemplates.map(t => ({
-            title: t.color(t.display || t.name),
-            value: t.name
-          })),
+          message: reset('Select extra templates:'),
+          choices: () =>
+            extraTemplates
+              .filter(t => !ignoredExtraTemplates.includes(t.name))
+              .map(t => ({
+                title: t.color(t.display || t.name),
+                value: t.name
+              })),
           onState: state => {
             const value = state.value as { value: string, selected: boolean }[]
             argExtraTemplates = value.filter(({ selected }) => selected).map(({ value }) => value)
@@ -250,9 +269,19 @@ async function main() {
       })
     }
 
-    Object.assign(pkg.scripts, scripts)
-    Object.assign(pkg.devDependencies, devDependencies)
-    Object.assign(pkg.dependencies, dependencies)
+    const assign = (key: string, obj: Record<string, any>) => {
+      if (!pkg[key]) {
+        if (Object.keys(obj).length) {
+          pkg[key] = obj
+        }
+      } else {
+        Object.assign(pkg[key], obj)
+      }
+    }
+
+    assign('scripts', scripts)
+    assign('devDependencies', devDependencies)
+    assign('dependencies', dependencies)
   })
 
   const patchFiles: Record<string, string> = {}
