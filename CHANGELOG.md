@@ -1,3 +1,9 @@
+# [0.7.0](https://github.com/vexip-ui/create-vexip/compare/v0.6.1...v0.7.0) (2023-10-12)
+
+### Features
+
+- add nuxt template ([#2](https://github.com/vexip-ui/create-vexip/issues/2)) ([652d4e1](https://github.com/vexip-ui/create-vexip/commit/652d4e18f565de9c186fd77c7b1a252a1bcc230c))
+
 ## [0.6.1](https://github.com/vexip-ui/create-vexip/compare/v0.5.8...v0.6.1) (2023-09-15)
 
 ### Features
