@@ -10,7 +10,7 @@
   "extra": {
     "prettier": {
       "devDependencies": {
-        "stylelint-prettier": "^3.0.0"
+        "stylelint-prettier": "^4.0.2"
       }
     }
   }

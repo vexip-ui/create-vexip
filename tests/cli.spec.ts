@@ -69,7 +69,7 @@ describe('test cli', () => {
     const { stdout } = run([projectName, '--template', 'vite-ts'], {
       cwd: __dirname
     })
-    expect(stdout).toContain('Select extra teamplates:')
+    expect(stdout).toContain('Select extra templates:')
   })
 
   it('skip prompts if specify extra templates', () => {
