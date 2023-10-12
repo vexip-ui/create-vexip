@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  height: 100%;
+  font-family: var(--vxp-font-family-base);
+  font-size: var(--vxp-font-size-base);
+  line-height: var(--vxp-line-height-base);
+  color: var(--vxp-content-color-base);
+  font-synthesis: none;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+#app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1280px;
+  padding: 2rem;
+  text-align: center;
+}

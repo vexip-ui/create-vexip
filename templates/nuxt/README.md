@@ -1,0 +1,1 @@
+# Vexip Nuxt Application
