@@ -1,3 +1,10 @@
+## [0.7.1](https://github.com/vexip-ui/create-vexip/compare/v0.7.0...v0.7.1) (2023-10-26)
+
+### Bug Fixes
+
+- correct process when update dependencies for Nuxt ([5567cda](https://github.com/vexip-ui/create-vexip/commit/5567cdacf55d40359601685a64d4d8f37240488a)), closes [#3](https://github.com/vexip-ui/create-vexip/issues/3)
+- duplicate eslint ignored items ([#1](https://github.com/vexip-ui/create-vexip/issues/1)) ([196c07e](https://github.com/vexip-ui/create-vexip/commit/196c07e9af6c5955988941a38ea27fbf473f5bd9))
+
 # [0.7.0](https://github.com/vexip-ui/create-vexip/compare/v0.6.1...v0.7.0) (2023-10-12)
 
 ### Features
