@@ -4,7 +4,6 @@ public
 .husky
 output
 coverage
-public
 temp
 __snapshots__
 
