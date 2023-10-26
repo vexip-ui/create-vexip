@@ -53,6 +53,7 @@ pnpm create vexip my-app --template vite-ts
 Currently supported base templates:
 
 - `vite-ts`
+- `nuxt`
 
 Currently supported extra templates:
 
