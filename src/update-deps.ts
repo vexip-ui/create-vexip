@@ -30,11 +30,11 @@ export async function updatePackageDeps(pkg: any, root: string) {
   for (const meta of resolved) {
     const { name, targetVersion } = meta
 
-    if (dependencies[name]) {
+    if (dependencies?.[name]) {
       dependencies[name] = targetVersion
     }
 
-    if (devDependencies[name]) {
+    if (devDependencies?.[name]) {
       devDependencies[name] = targetVersion
     }
   }

@@ -301,6 +301,8 @@ async function main() {
     { key: 'dependencies', origin: pkg.dependencies },
     { key: 'devDependencies', origin: pkg.devDependencies }
   ].forEach(({ key, origin }) => {
+    if (!origin) return
+
     const map: Record<string, string> = {}
     const names = Object.keys(origin).sort((prev, next) => prev.localeCompare(next))
 
