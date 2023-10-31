@@ -69,4 +69,4 @@ Currently supported extra templates:
 | `--template`   | `-t` | `string`                        | Specify a base template                                                                            |
 | `--extra`      | `-e` | `boolean \| string \| string[]` | Specify some extra templates, all extra templates will be used if not specify names                |
 | `--commitlint` | `-c` | `boolean`                       | Whether using commitlint with husky and lint-staged, it requires at least one lint tool to be used |
-| `--update`     | `-u` | `boolean`                       | Whether using npm-check-updates to update dependencies in package.json                             |
+| `--update`     | `-u` | `boolean`                       | Whether using [taze](https://github.com/antfu/taze) to update dependencies in package.json         |
