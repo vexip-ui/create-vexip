@@ -1,3 +1,9 @@
+# [0.8.0](https://github.com/vexip-ui/create-vexip/compare/v0.7.1...v0.8.0) (2023-10-31)
+
+### Features
+
+- **vite-ts:** update config template of Vite ([d0fff12](https://github.com/vexip-ui/create-vexip/commit/d0fff12827aa1956febc6e94f32acf4d16f83c5a))
+
 ## [0.7.1](https://github.com/vexip-ui/create-vexip/compare/v0.7.0...v0.7.1) (2023-10-26)
 
 ### Bug Fixes
