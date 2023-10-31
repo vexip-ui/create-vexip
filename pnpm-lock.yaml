@@ -47,8 +47,8 @@ devDependencies:
     specifier: ^1.2.0
     version: 1.2.0(vue@3.3.4)
   '@vexip-ui/plugins':
-    specifier: ^1.4.0
-    version: 1.4.0
+    specifier: ^1.5.0
+    version: 1.5.0
   '@vexip-ui/prettier-config':
     specifier: ^0.2.0
     version: 0.2.0(prettier@3.0.3)
@@ -122,8 +122,8 @@ devDependencies:
     specifier: ^0.25.2
     version: 0.25.2(rollup@3.28.1)(vue@3.3.4)
   vexip-ui:
-    specifier: ^2.2.6
-    version: 2.2.6(vue@3.3.4)
+    specifier: ^2.2.8
+    version: 2.2.8(vue@3.3.4)
   vite:
     specifier: ^4.4.11
     version: 4.4.11(@types/node@20.8.4)
@@ -2544,10 +2544,10 @@ packages:
       vue: 3.3.4
     dev: true
 
-  /@vexip-ui/plugins@1.4.0:
-    resolution: {integrity: sha512-zecLEhschvXGd52mjelb5Id3M4H2RYS6vO2j6OdHsr3pmmDbzO3Y6/U9IX4GoeyanW9t5pqmTDBuqX/xvunNZw==}
+  /@vexip-ui/plugins@1.5.0:
+    resolution: {integrity: sha512-Fp0fHdX0Zc16fMxstrgcyiD/5KkeqlHsLysee4vAHAMi09mtWmhyqEQVcmX7RsQ3702gQ/2Ovodwcf5GX1MAKw==}
     dependencies:
-      '@vexip-ui/utils': 2.0.0
+      '@vexip-ui/utils': 2.3.0
       compare-versions: 6.0.0
       local-pkg: 0.4.3
     dev: true
@@ -2588,6 +2588,10 @@ packages:
 
   /@vexip-ui/utils@2.1.0:
     resolution: {integrity: sha512-fjIMVcelE5gI9sLUdhDKU8kb0AkFgzRLNyg2ir1bwCCnTAtspbmYUk+8hO7DnSTEVUftEPgg+rhRG2rJfhB+fA==}
+    dev: true
+
+  /@vexip-ui/utils@2.3.0:
+    resolution: {integrity: sha512-Hqwdi4Ej9oIVr7OuM08IVjSqJtCClaJUjcacUEbH4uiDAeJke4udTcCbyn/1xI3KUHZCUngD1YsF3Bst8wqQJQ==}
     dev: true
 
   /@vitejs/plugin-vue-jsx@3.0.2(vite@4.4.11)(vue@3.3.4):
@@ -3326,7 +3330,7 @@ packages:
       normalize-path: 3.0.0
       readdirp: 3.6.0
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /chownr@2.0.0:
@@ -4739,14 +4743,6 @@ packages:
 
   /fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
-
-  /fsevents@2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
-    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
 
   /fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
@@ -7758,7 +7754,7 @@ packages:
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /rollup@3.28.1:
@@ -7766,7 +7762,7 @@ packages:
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /run-parallel@1.2.0:
@@ -9025,8 +9021,8 @@ packages:
     dependencies:
       builtins: 5.0.1
 
-  /vexip-ui@2.2.6(vue@3.3.4):
-    resolution: {integrity: sha512-HSHu5bT7VPTcCojARPkIJtmKumVegGCz4/VDUfwUphYPPHlMBIvWtqFl4tCC+gHvGJKWn05yB+WSudZDao4shQ==}
+  /vexip-ui@2.2.8(vue@3.3.4):
+    resolution: {integrity: sha512-4NkZhP7N9LtQxHw/hwXA5l81JDo4ETmbCahFCau7lBnNdgY5IlUbLQFHTGcpaUv+GR2fxu4q2aL8UEQuVFhZbQ==}
     peerDependencies:
       vue: ^3.2.25
     dependencies:
@@ -9034,7 +9030,7 @@ packages:
       '@vexip-ui/config': 1.1.1(vue@3.3.4)
       '@vexip-ui/hooks': 2.0.2(vue@3.3.4)
       '@vexip-ui/icons': 1.2.0(vue@3.3.4)
-      '@vexip-ui/utils': 2.1.0
+      '@vexip-ui/utils': 2.3.0
       vue: 3.3.4
     dev: true
 
@@ -9093,7 +9089,7 @@ packages:
       postcss: 8.4.28
       rollup: 3.28.1
     optionalDependencies:
-      fsevents: 2.3.2
+      fsevents: 2.3.3
     dev: true
 
   /vitest@0.34.6:
