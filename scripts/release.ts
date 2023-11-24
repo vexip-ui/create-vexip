@@ -16,7 +16,7 @@ const isDryRun = args.dry || args.d
 const rootDir = resolve(fileURLToPath(import.meta.url), '../..')
 
 release({
-  pkgDir: resolve(rootDir, 'package.json'),
+  pkgDir: rootDir,
   isDryRun,
   preId: args.preid,
   publish: true,
