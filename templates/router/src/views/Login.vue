@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 
+import { useBEM } from '@vexip-ui/bem-helper'
+
 interface Model {
   username: string,
   password: string
 }
 
+const nh = useBEM('login')
 const model = reactive({} as Model)
 
 const providedProps = {
@@ -20,17 +23,17 @@ const providedProps = {
 </script>
 
 <template>
-  <Card class="login">
-    <Row class="login__sign" justify="center" align="middle">
+  <Card :class="nh.b()">
+    <Row :class="nh.be('sign')" justify="center" align="middle">
       <Linker to="https://www.vexipui.com/">
-        <img src="/vexip-ui.svg" class="login__logo" alt="Vexip UI Logo" />
+        <img src="/vexip-ui.svg" :class="nh.be('logo')" alt="Vexip UI Logo" />
       </Linker>
       <H1 style="margin: 0">
         Vexip UI
       </H1>
     </Row>
     <ConfigProvider :props="providedProps">
-      <Form class="login__form" :model="model" hide-label>
+      <Form :class="nh.be('form')" :model="model" hide-label>
         <FormItem prop="username">
           <Input placeholder="Please input username" :prefix="IUser"></Input>
         </FormItem>
@@ -47,7 +50,7 @@ const providedProps = {
         </FormItem>
       </Form>
     </ConfigProvider>
-    <div class="login__tip">
+    <div :class="nh.be('tip')">
       <Divider> Click on the Vexip UI logo to learn more </Divider>
     </div>
   </Card>

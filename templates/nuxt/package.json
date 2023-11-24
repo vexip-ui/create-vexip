@@ -11,11 +11,11 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
-    "@vexip-ui/nuxt": "^1.1.0",
-    "nuxt": "^3.7.4",
-    "sass": "^1.69.3",
-    "vexip-ui": "^2.2.7",
-    "vue": "^3.3.4",
+    "@vexip-ui/nuxt": "^1.2.2",
+    "nuxt": "^3.8.2",
+    "sass": "^1.69.5",
+    "vexip-ui": "^2.2.14",
+    "vue": "^3.3.8",
     "vue-router": "^4.2.5"
   }
 }
