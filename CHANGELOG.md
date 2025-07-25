@@ -1,3 +1,12 @@
+# [0.10.0](https://github.com/vexip-ui/create-vexip/compare/v0.9.0...v0.10.0) (2025-07-25)
+
+
+### Features
+
+* upgrade eslint to v9 ([07dcf09](https://github.com/vexip-ui/create-vexip/commit/07dcf0967c0e4910d2b004a2a5317b94fcc1a2cd))
+
+
+
 # [0.9.0](https://github.com/vexip-ui/create-vexip/compare/v0.8.0...v0.9.0) (2023-11-24)
 
 ### Features
