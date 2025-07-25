@@ -11,11 +11,11 @@ export function patchStylelint(extraTemplates: string[]) {
   if (!extraTemplates.includes('prettier')) {
     stylelintrc = stylelintrc.replace(
       "['stylelint-order', 'stylelint-prettier']",
-      "['stylelint-order']"
+      "['stylelint-order']",
     )
   }
 
   return {
-    [configFile]: stylelintrc
+    [configFile]: stylelintrc,
   }
 }

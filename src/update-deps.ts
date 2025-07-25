@@ -11,9 +11,9 @@ export async function updatePackageDeps(pkg: any, root: string) {
     raw: pkg,
     deps: [
       ...parseDependencies(pkg, 'dependencies', () => true),
-      ...parseDependencies(pkg, 'devDependencies', () => true)
+      ...parseDependencies(pkg, 'devDependencies', () => true),
     ],
-    resolved: []
+    resolved: [],
   }
 
   await resolvePackage(packageMeta, {
@@ -21,7 +21,7 @@ export async function updatePackageDeps(pkg: any, root: string) {
     loglevel: '',
     mode: 'latest',
     write: false,
-    all: true
+    all: true,
   })
 
   const { resolved } = packageMeta

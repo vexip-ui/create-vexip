@@ -8,7 +8,7 @@ import { VexipUIResolver } from '@vexip-ui/plugins'
 export default defineConfig(async ({ command }) => {
   return {
     optimizeDeps: {
-      include: ['vexip-ui', '@vexip-ui/icons']
+      include: ['vexip-ui', '@vexip-ui/icons'],
     },
     plugins: [
       vue(),
@@ -17,24 +17,24 @@ export default defineConfig(async ({ command }) => {
         vueTemplate: true,
         resolvers: [
           VexipUIResolver({
-            fullStyle: command === 'serve'
-          })
+            fullStyle: command === 'serve',
+          }),
         ],
         imports: [
           {
             '@vexip-ui/icons': Object.keys(await import('@vexip-ui/icons')).map(name =>
-              name.match(/^I[0-9]/) ? name : [name, `I${name}`]
-            )
-          }
-        ]
+              name.match(/^I[0-9]/) ? name : [name, `I${name}`],
+            ),
+          },
+        ],
       }),
       components({
         resolvers: [
           VexipUIResolver({
-            fullStyle: command === 'serve'
-          })
-        ]
-      })
-    ]
+            fullStyle: command === 'serve',
+          }),
+        ],
+      }),
+    ],
   }
 })

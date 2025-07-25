@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url'
 export function patchCommitlint(extraTemplates: string[]) {
   const dir = path.resolve(fileURLToPath(import.meta.url), '../../templates/commitlint')
   const lintstagedrc = JSON.parse(
-    fs.readFileSync(path.join(dir, '.husky', '.lintstagedrc'), 'utf-8')
+    fs.readFileSync(path.join(dir, '.husky', '.lintstagedrc'), 'utf-8'),
   )
   const fileTypes = Object.keys(lintstagedrc)
 
@@ -34,6 +34,6 @@ export function patchCommitlint(extraTemplates: string[]) {
   })
 
   return {
-    '.husky/.lintstagedrc': JSON.stringify(lintstagedrc, null, 2)
+    '.husky/.lintstagedrc': JSON.stringify(lintstagedrc, null, 2),
   }
 }

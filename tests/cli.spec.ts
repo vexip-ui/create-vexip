@@ -67,14 +67,14 @@ describe('test cli', () => {
 
   it('asks to select extra templates if has specified template', () => {
     const { stdout } = run([projectName, '--template', 'vite-ts'], {
-      cwd: __dirname
+      cwd: __dirname,
     })
     expect(stdout).toContain('Select extra templates:')
   })
 
   it('skip prompts if specify extra templates', () => {
     const { stdout } = run([projectName, '--template', 'vite-ts', '--extra'], {
-      cwd: __dirname
+      cwd: __dirname,
     })
     expect(stdout).toContain('Use commitlint and husky?')
   })

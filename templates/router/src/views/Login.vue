@@ -13,12 +13,12 @@ const model = reactive({} as Model)
 
 const providedProps = {
   button: {
-    size: 'large'
+    size: 'large',
   },
   input: {
     size: 'large',
-    clearable: true
-  }
+    clearable: true,
+  },
 }
 </script>
 

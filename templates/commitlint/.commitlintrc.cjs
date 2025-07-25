@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['@vexip-ui/commitlint-config']
+  extends: ['@vexip-ui/commitlint-config'],
 }

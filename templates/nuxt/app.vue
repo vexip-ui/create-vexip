@@ -12,12 +12,12 @@ const model = reactive({} as Model)
 
 const providedProps: PropsOptions = {
   button: {
-    size: 'large'
+    size: 'large',
   },
   input: {
     size: 'large',
-    clearable: true
-  }
+    clearable: true,
+  },
 }
 </script>
 

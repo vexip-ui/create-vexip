@@ -22,7 +22,7 @@ release({
   publish: true,
   runTest: () => run('pnpm', ['test']),
   runBuild: () => run('pnpm', ['build']),
-  runChangelog: () => run('pnpm', ['changelog'])
+  runChangelog: () => run('pnpm', ['changelog']),
 }).catch(error => {
   logger.error(error)
   process.exit(1)

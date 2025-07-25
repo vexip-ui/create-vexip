@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -42,13 +44,13 @@ const templates: Template[] = [
   {
     name: 'vite-ts',
     display: 'Vite + TypeScript',
-    color: cyan
+    color: cyan,
   },
   {
     name: 'nuxt',
     display: 'Nuxt',
-    color: lightGreen
-  }
+    color: lightGreen,
+  },
 ]
 const templateNames = templates.map(t => t.name)
 
@@ -56,34 +58,34 @@ const extraTemplates: Template[] = [
   {
     name: 'eslint',
     display: 'ESlint',
-    color: yellow
+    color: yellow,
   },
   {
     name: 'stylelint',
     display: 'Stylelint',
-    color: yellow
+    color: yellow,
   },
   {
     name: 'prettier',
     display: 'Prettier',
-    color: yellow
+    color: yellow,
   },
   {
     name: 'router',
     display: 'Vue Router',
-    color: lightGreen
-  }
+    color: lightGreen,
+  },
 ]
 const extraTemplateNames = extraTemplates.map(t => t.name)
 
 const ignoredExtra: Record<string, string[]> = {
-  nuxt: ['router']
+  nuxt: ['router'],
 }
 
 const defaultTargetDir = 'vexip-project'
 
 const renameFiles: Record<string, string | undefined> = {
-  _gitignore: '.gitignore'
+  _gitignore: '.gitignore',
 }
 
 async function main() {
@@ -102,7 +104,7 @@ async function main() {
     argExtraTemplates = argExtra ? extraTemplateNames : []
   } else {
     argExtraTemplates = (argExtra ? ensureArray(argExtra) : []).filter(
-      name => name && extraTemplateNames.includes(name)
+      name => name && extraTemplateNames.includes(name),
     )
   }
 
@@ -119,7 +121,7 @@ async function main() {
           initial: defaultTargetDir,
           onState: state => {
             targetDir = formatTargetDir(state.value) || defaultTargetDir
-          }
+          },
         },
         {
           type: () => (!fs.existsSync(targetDir) || isEmpty(targetDir) ? null : 'confirm'),
@@ -128,7 +130,7 @@ async function main() {
             (targetDir === '.' || targetDir === './'
               ? 'Current directory'
               : `Target directory '${targetDir}'`) +
-            ' is not empty. Remove existing files and continue?'
+            ' is not empty. Remove existing files and continue?',
         },
         {
           type: (_, { overwrite }: { overwrite?: boolean }) => {
@@ -137,14 +139,14 @@ async function main() {
             }
             return null
           },
-          name: 'overwriteChecker'
+          name: 'overwriteChecker',
         },
         {
           type: () => (isValidPackageName(getProjectName()) ? null : 'text'),
           name: 'packageName',
           message: reset('Package name:'),
           initial: () => toValidPackageName(getProjectName()),
-          validate: dir => isValidPackageName(dir) || 'Invalid package.json name'
+          validate: dir => isValidPackageName(dir) || 'Invalid package.json name',
         },
         {
           type: argTemplate && templateNames.includes(argTemplate) ? null : 'select',
@@ -156,11 +158,11 @@ async function main() {
           initial: 0,
           choices: templates.map(t => ({
             title: t.color(t.display || t.name),
-            value: t.name
+            value: t.name,
           })),
           onState: state => {
             ignoredExtraTemplates = ignoredExtra[state.value] || []
-          }
+          },
         },
         {
           type: argExtraTemplates.length ? null : 'multiselect',
@@ -171,12 +173,12 @@ async function main() {
               .filter(t => !ignoredExtraTemplates.includes(t.name))
               .map(t => ({
                 title: t.color(t.display || t.name),
-                value: t.name
+                value: t.name,
               })),
           onState: state => {
             const value = state.value as { value: string, selected: boolean }[]
             argExtraTemplates = value.filter(({ selected }) => selected).map(({ value }) => value)
-          }
+          },
         },
         {
           type: () =>
@@ -187,20 +189,20 @@ async function main() {
               : null,
           name: 'commitlint',
           message: reset('Use commitlint and husky?'),
-          initial: true
+          initial: true,
         },
         {
           type: aggUpdateDeps !== undefined ? null : 'confirm',
           name: 'updateDeps',
           message: reset('Update dependencies version?'),
-          initial: true
-        }
+          initial: true,
+        },
       ],
       {
         onCancel: () => {
           throw new Error(red('✖') + ' Operation cancelled')
-        }
-      }
+        },
+      },
     )
   } catch (error) {
     console.error(error)
@@ -299,7 +301,7 @@ async function main() {
   })
   ;[
     { key: 'dependencies', origin: pkg.dependencies },
-    { key: 'devDependencies', origin: pkg.devDependencies }
+    { key: 'devDependencies', origin: pkg.devDependencies },
   ].forEach(({ key, origin }) => {
     if (!origin) return
 
@@ -384,7 +386,7 @@ function pkgFromUserAgent(userAgent: string | undefined) {
 
   return {
     name: pkgSpecArr[0],
-    version: pkgSpecArr[1]
+    version: pkgSpecArr[1],
   }
 }
 
